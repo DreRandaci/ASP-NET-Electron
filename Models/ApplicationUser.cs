@@ -12,11 +12,6 @@ namespace number_cruncher.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Required]
-        public string Password { get; set; }
-        public virtual ICollection<Insurance> InsuranceAccounts { get; set; }
-        public virtual ICollection<Mileage> MilageRecords { get; set; }
-        public virtual ICollection<Paycheck> Paychecks { get; set; }
-        public virtual ICollection<Other> OtherRecords { get; set; }
+        public virtual ICollection<Expenses> Expenses { get; set; }
     }
 }

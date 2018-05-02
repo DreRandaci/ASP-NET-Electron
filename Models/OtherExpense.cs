@@ -2,13 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace number_cruncher.Models
 {
-    public class Insurance
+    public class OtherExpense
     {
         [Key]
-        public int InsuranceId { get; set; }
-        [Required]
-        public string Name { get; set; }
-        public ExpenseCategory Type { get; set; }
+        public int OtherExpenseId { get; set; }
+        public ExpenseCategory ExpenseCategory { get; set; }
         public int Amount { get; set; }
         public DataType Date { get; set; }
     }
