@@ -7,7 +7,7 @@ namespace number_cruncher.Models
         [Key]
         public int VehicleId { get; set; }
         [Required]
-        public int Miles { get; set; }
+        public int CurrentMiles { get; set; }
         public string Name { get; set; }
     }
 }
