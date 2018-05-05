@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace number_cruncher.Models
@@ -7,9 +8,12 @@ namespace number_cruncher.Models
         [Key]
         public int PaycheckId { get; set; }
         [Required]
+        public ApplicationUser User { get; set; }
+        [Required]
+        public Client Client { get; set; }
+        [Required]
         public double Amount { get; set; }
         [Required]
-        public DataType Date { get; set; }
-        public Client Client { get; set; }
+        public DateTime DateReceived { get; set; }
     }
 }

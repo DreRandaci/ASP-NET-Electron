@@ -13,7 +13,6 @@ namespace number_cruncher.Data
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Client> Client { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategory { get; set; }
-        public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Insurance> Insurance { get; set; }
         public DbSet<MileageRecord> MileageRecord { get; set; }
         public DbSet<OtherExpense> OtherExpense { get; set; }

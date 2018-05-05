@@ -6,7 +6,8 @@ namespace number_cruncher.Models
     {
         [Key]
         public int ExpenseCategoryId { get; set; }
+
         [Required]
-        public string Type { get; set; }
+        public string ExpenseType { get; set; }
     }
 }
