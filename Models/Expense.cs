@@ -17,6 +17,9 @@ namespace number_cruncher.Models
         [Required]
         public string ExpenseName { get; set; }
 
+        [DateTime]
+        public DateTime? DateCreated { get; set; }
+
         public string Details { get; set; }
     }
 }

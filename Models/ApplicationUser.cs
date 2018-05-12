@@ -14,6 +14,19 @@ namespace number_cruncher.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [DateTime]
+        public DateTime DateCreated
+        {
+            get => this.dateCreated.HasValue
+                    ? this.dateCreated.Value
+                    : DateTime.Now;
+
+            set => this.dateCreated = value;
+        }
+
+        private DateTime? dateCreated = null;
+
         public virtual ICollection<Client> Clients { get; set; }
 
         public virtual ICollection<Expense> Expenses { get; set; }
