@@ -18,7 +18,6 @@ namespace number_cruncher.Models
         public double Amount { get; set; }
 
         [Required]
-        [DateTime]
         public DateTime ExpenseDate { get; set; }
 
         [Required]

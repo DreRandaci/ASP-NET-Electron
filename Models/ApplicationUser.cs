@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
@@ -15,17 +16,7 @@ namespace number_cruncher.Models
         public string LastName { get; set; }
 
         [Required]
-        [DateTime]
-        public DateTime DateCreated
-        {
-            get => this.dateCreated.HasValue
-                    ? this.dateCreated.Value
-                    : DateTime.Now;
-
-            set => this.dateCreated = value;
-        }
-
-        private DateTime? dateCreated = null;
+        public DateTime DateCreated { get; set; }
 
         public virtual ICollection<Client> Clients { get; set; }
 

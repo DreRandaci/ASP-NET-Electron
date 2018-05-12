@@ -22,6 +22,10 @@ namespace number_cruncher.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationUser>()
+                .Property(a => a.DateCreated)
+                .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
         }
     }
 }

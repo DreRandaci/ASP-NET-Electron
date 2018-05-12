@@ -15,10 +15,8 @@ namespace number_cruncher.Models
         public double Amount { get; set; }
 
         [Required]
-        [DateTime]
         public DateTime DateReceived { get; set; }
 
-        [DateTime]
         public DateTime? DateDeposited { get; set; }
     }
 }
