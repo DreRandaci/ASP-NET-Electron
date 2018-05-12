@@ -3,17 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace number_cruncher.Models
 {
-    public class OtherExpense
+    public class Expense
     {
         [Key]
-        public int OtherExpenseId { get; set; }
+        public int ExpenseId { get; set; }
+
         [Required]
         public ApplicationUser User { get; set; }
+
         [Required]
         public ExpenseCategory ExpenseCategory { get; set; }
+
         [Required]
-        public int Amount { get; set; }
-        [Required]
-        public DateTime ExpenseDate { get; set; }
+        public string ExpenseName { get; set; }
+
+        public string Details { get; set; }
     }
 }

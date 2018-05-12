@@ -9,14 +9,13 @@ namespace number_cruncher.Models
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         public virtual ICollection<Client> Clients { get; set; }
-        public virtual ICollection<InsuranceRecord> InsuranceGroups { get; set; }
-        public virtual ICollection<MileageRecord> MileageRecords { get; set; }
-        public virtual ICollection<OtherExpense> OtherExpenses { get; set; }
-        public virtual ICollection<Paycheck> Paychecks { get; set; }
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
+
+        public virtual ICollection<Expense> Expenses { get; set; }
     }
 }

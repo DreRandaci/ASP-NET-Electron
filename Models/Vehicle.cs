@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace number_cruncher.Models
@@ -9,11 +10,11 @@ namespace number_cruncher.Models
         [Required]
         public ApplicationUser User { get; set; }
         [Required]
-        public ExpenseCategory ExpenseCategory { get; set; }
-        [Required]
         public int CurrentMiles { get; set; }
         [Required]
         public string VehicleModel { get; set; }
         public string VehicleName { get; set; }
+        [Required]
+        public virtual ICollection<MileageRecord> MileageRecords { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace number_cruncher.Models
   {
       [Key]
       public int ClientCategoryId { get; set; }
+
       [Required]
       public string ClientType { get; set; }
   }
