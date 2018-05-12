@@ -1,2 +1,2 @@
 # Number Cruncher
-This project is an [Electron.NET Core](https://github.com/ElectronNET/Electron.NET) expense tracker built for personal use. The aim of the project is to better understand Electron's build process and make a desktop MVC application. A potential v2 may include an Electron mobile application and deployment of the .NET Core Web API.
+This project is an [Electron.NET Core](https://github.com/ElectronNET/Electron.NET) expense tracker built for personal use. The aim of the project is to better understand Electron's build process and make a native desktop MVC application that can be used on Linux and Windows. A potential v2 may include an Electron mobile application and deployment of the .NET Core Web API.
