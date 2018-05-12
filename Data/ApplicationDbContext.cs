@@ -16,9 +16,8 @@ namespace number_cruncher.Data
         public DbSet<Expense> Expense { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategory { get; set; }
         public DbSet<ExpenseRecord> ExpenseRecord { get; set; }
-        public DbSet<MileageRecord> MileageRecord { get; set; }
+        public DbSet<ExpenseRecordImage> ExpenseRecordImage { get; set; }
         public DbSet<Paycheck> Paycheck { get; set; }
-        public DbSet<Vehicle> Vehicle { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
