@@ -1,7 +1,7 @@
 # Number Cruncher
-This project is an [Electron.NET Core](https://github.com/ElectronNET/Electron.NET) expense tracker built mainly for personal use, but feel free to pull the project down and run it locally on your machine. The aim of the project is to better understand Electron's build process and make a native desktop MVC application that can be used on Linux and Windows. A potential v2 may include an Electron mobile application and deployment of the .NET Core Web API.
+> Note: this project was built using Visual Studio Code, so there is no solution file. v1 is not currently at MVP but feel free to poke around the repo.
 
-> This project was built using Visual Studio Code. It is not currently at MVP for v1 but feel free to poke around the repo
+This project is an [Electron.NET Core](https://github.com/ElectronNET/Electron.NET) expense tracker built mainly for personal use, but feel free to pull the project down and run it locally on your machine. The aim of the project is to better understand Electron's build process and make a native desktop MVC application that can be used on Linux and Windows. A potential v2 may include an Electron mobile application and deployment of the .NET Core Web API.
 
 **Prerequisites for installation**:
 
@@ -43,13 +43,11 @@ PM> Install-Package ElectronNET.API
 # .NET CLI
 $ dotnet add package ElectronNET.API --version 0.0.9
 ```
-- Add the proper `environment` variable to your system for the path to the database in your `shell` command file. This is the code that requires the path in `Startup.cs`:
+- Add an `environment` variable to your system for the path to the database in your `shell` command file. This is the code block that requires the path in `Startup.cs`:
 ```csharp
-string path = System.Environment.GetEnvironmentVariable("NUMBER_CRUNCHER");
-            var connection = $"Filename={path}";
-            Console.WriteLine($"connection = {connection}");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
-
+string path = System.Environment.GetEnvironmentVariable("YOUR_DATABASE_PATH");
+var connection = $"Filename={path}";
+services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 ```
 - Build the database:
 ```sh
