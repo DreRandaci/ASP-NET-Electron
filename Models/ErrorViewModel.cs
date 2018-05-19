@@ -1,6 +1,6 @@
 using System;
 
-namespace aspNetElectron.Models
+namespace number_cruncher.Models
 {
     public class ErrorViewModel
     {

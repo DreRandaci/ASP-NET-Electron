@@ -11,7 +11,7 @@ using System;
 namespace aspNetElectron.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180512210212_initial")]
+    [Migration("20180519201323_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
