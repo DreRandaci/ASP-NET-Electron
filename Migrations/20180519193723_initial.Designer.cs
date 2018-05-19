@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using number_cruncher.Data;
 using System;
 
-namespace aspNetElectron.Migrations
+namespace number_cruncher.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180512210212_initial")]
+    [Migration("20180519193723_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

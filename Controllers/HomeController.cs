@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using aspNetElectron.Models;
+using number_cruncher.Models;
 
-namespace aspNetElectron.Controllers
+namespace number_cruncher.Controllers
 {
     public class HomeController : Controller
     {

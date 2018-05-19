@@ -11,8 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using number_cruncher.Data;
 using number_cruncher.Models;
+using number_cruncher.Services;
 
-namespace aspNetElectron
+namespace number_cruncher
 {
     public class Startup
     {
@@ -27,11 +28,15 @@ namespace aspNetElectron
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            // Grab the environment variable holding the path to the database
             string path = System.Environment.GetEnvironmentVariable("NUMBER_CRUNCHER");
             var connection = $"Filename={path}";
-            Console.WriteLine($"connection = {connection}");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 
             services.AddMvc();
@@ -43,6 +48,7 @@ namespace aspNetElectron
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -51,6 +57,8 @@ namespace aspNetElectron
 
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -58,7 +66,6 @@ namespace aspNetElectron
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
-
         }
     }
 }
