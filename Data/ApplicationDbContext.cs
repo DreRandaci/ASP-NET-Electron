@@ -24,7 +24,7 @@ namespace number_cruncher.Data
             base.OnModelCreating(builder);
 
             builder.Entity<ApplicationUser>()
-                .Property(a => a.DateCreated)
+                .Property(user => user.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
         }
     }

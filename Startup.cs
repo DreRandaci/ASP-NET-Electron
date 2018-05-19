@@ -27,17 +27,17 @@ namespace number_cruncher
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Grab the environment variable holding the path to the database
+            string path = System.Environment.GetEnvironmentVariable("NUMBER_CRUNCHER");
+            var connection = $"Filename={path}";
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
-            // Grab the environment variable holding the path to the database
-            string path = System.Environment.GetEnvironmentVariable("NUMBER_CRUNCHER");
-            var connection = $"Filename={path}";
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 
             services.AddMvc();
         }

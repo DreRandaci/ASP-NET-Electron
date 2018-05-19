@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace number_cruncher.Migrations
+namespace aspNetElectron.Migrations
 {
     public partial class initial : Migration
     {
