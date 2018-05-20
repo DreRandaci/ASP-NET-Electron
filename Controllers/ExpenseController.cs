@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using number_cruncher.Data;
 using number_cruncher.Models;
+using number_cruncher.Models.ExpenseViewModels;
 
 namespace number_cruncher.Controllers
 {
@@ -38,12 +39,12 @@ namespace number_cruncher.Controllers
                 .Where(e => e.User == user)
                 .ToListAsync();
 
-            if (expenses == null)
+            if (expenses == null | expenses.Count < 1)
             {
-                return Ok("IT WORKED");
+                return NotFound();
             }
 
-            return Ok(expenses);
+            return View(expenses);
         }
 
         // GET: Expenses/Details/5
@@ -64,6 +65,32 @@ namespace number_cruncher.Controllers
 
             return View(expense);
         }
+
+        // POST: Notes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateExpenseViewModel expenseViewModel)
+        {
+            ModelState.Remove("expense.user");
+
+            if (ModelState.IsValid)
+            {
+                // get current user
+                ApplicationUser user = await GetCurrentUserAsync();
+                // add current user
+                expenseViewModel.Expense.User = user;
+
+                _context.Add(expenseViewModel.Expense);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
         public IActionResult Error()
         {
