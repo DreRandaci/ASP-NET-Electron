@@ -9,7 +9,14 @@ namespace number_cruncher.Models.ExpenseViewModels
   public class CreateExpenseViewModel
   {
       [Required]
+      public Expense Expense { get; set; }
+
+      [Required]
+      public ExpenseCategory ExpenseCategory { get; set; }
+
+      [Required]
       public string ExpenseType { get; set; }
+
       [Required]
       public string ExpenseName { get; set; }
 
