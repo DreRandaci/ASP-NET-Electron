@@ -1,5 +1,70 @@
-﻿@{
+﻿@model number_cruncher.Models.ExpenseViewModels.ExpensesViewModel
+@{
     ViewData["Title"] = "Expense Page";
 }
 
-<h1>IT WORKED</h1>
+<h2>Expenses</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Expense
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Expenses.Count > 0)
+        {
+            foreach (var item in Model.Expenses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item)
+                    </td>
+
+                    <td>
+                        <form asp-action="" asp-route-expenseId="@item.ExpenseId">
+                            <input class="btn btn-danger" type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        <!-- else
+        {
+            <tr>
+                <td>
+                    You don't have any expenses.
+                </td>
+            </tr>
+        } -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Expenses Total</td>
+            <td></td>
+            <td>HERE THE TOTAL WILL GO</td>
+        </tr>
+    </tfoot>
+</table>
+<div class="btn-toolbar">
+    <form asp-action="Create" asp-controller="Expense">
+        <input class="btn btn-success" type="submit" value="Create new expense" />
+    </form>
+</div>

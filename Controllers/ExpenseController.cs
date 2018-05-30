@@ -29,11 +29,15 @@ namespace number_cruncher.Controllers
         // This task retrieves the currently authenticated user
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        // GET: Expenses
+        // GET: Expense
         public async Task<IActionResult> Index()
         {
-            // get current user
             ApplicationUser user = await GetCurrentUserAsync();
+
+            var model = new ExpensesViewModel()
+            {
+                User = user
+            };
 
             var expenses = await _context.Expense
                 .Where(e => e.User == user)
@@ -41,10 +45,14 @@ namespace number_cruncher.Controllers
 
             if (expenses == null | expenses.Count < 1)
             {
-                return NotFound();
+                model.Expenses = new List<Expense>();
+
+                return View(model);
             }
 
-            return View(expenses);
+            model.Expenses = expenses;
+
+            return View(model);
         }
 
         // GET: Expenses/Details/5
