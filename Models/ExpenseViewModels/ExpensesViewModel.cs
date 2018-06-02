@@ -13,5 +13,11 @@ namespace number_cruncher.Models.ExpenseViewModels
 
       [Required]
       public virtual ICollection<Expense> Expenses { get; set; }
+
+      [Required]
+      public double ExpensesTotal { get; set; }
+
+      [Required]
+      public double MileageTotal { get; set; }
   }
 }

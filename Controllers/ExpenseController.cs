@@ -40,17 +40,29 @@ namespace number_cruncher.Controllers
             };
 
             var expenses = await _context.Expense
+                .Include("ExpenseCategory")
                 .Where(e => e.User == user)
                 .ToListAsync();
+
+            var expensesTotal = _context.ExpenseRecord
+                .Where(e => e.Expense.User == user
+                    && e.Expense.ExpenseCategory.ExpenseType != "Mileage")
+                .Sum(e => e.Amount);
+
+            var mileageTotal = _context.ExpenseRecord
+                .Where(e => e.Expense.User == user
+                    && e.Expense.ExpenseCategory.ExpenseType == "Mileage")
+                .Sum(e => e.Amount);
 
             if (expenses == null | expenses.Count < 1)
             {
                 model.Expenses = new List<Expense>();
-
                 return View(model);
             }
 
             model.Expenses = expenses;
+            model.ExpensesTotal = expensesTotal;
+            model.MileageTotal = mileageTotal;
 
             return View(model);
         }

@@ -15,7 +15,7 @@
                 Type
             </th>
             <th>
-                Date
+                Date Added
             </th>
             <th>
                 Total
@@ -29,37 +29,39 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item)
+                        @Html.DisplayFor(modelItem => item.ExpenseName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item)
+                        @Html.DisplayFor(modelItem => item.ExpenseCategory.ExpenseType)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item)
+                        @Html.DisplayFor(modelItem => item.DateCreated)
+                    </td>
+                    <td>
+
                     </td>
 
                     <td>
                         <form asp-action="" asp-route-expenseId="@item.ExpenseId">
-                            <input class="btn btn-danger" type="submit" value="Delete" />
+                            <input class="btn btn-info" type="submit" value="View Records" />
                         </form>
                     </td>
                 </tr>
             }
         }
-        <!-- else
-        {
-            <tr>
-                <td>
-                    You don't have any expenses.
-                </td>
-            </tr>
-        } -->
     </tbody>
     <tfoot>
         <tr>
             <td>Expenses Total</td>
             <td></td>
-            <td>HERE THE TOTAL WILL GO</td>
+            <td></td>
+            <td>$@Html.DisplayFor(modelItem => modelItem.ExpensesTotal)</td>
+        </tr>
+        <tr>
+            <td>Mileage Total</td>
+            <td></td>
+            <td></td>
+            <td>@Html.DisplayFor(modelItem => modelItem.MileageTotal) miles driven</td>
         </tr>
     </tfoot>
 </table>
