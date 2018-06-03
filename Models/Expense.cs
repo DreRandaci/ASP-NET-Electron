@@ -24,5 +24,7 @@ namespace number_cruncher.Models
 
         [Display(Name = "Details")]
         public string Details { get; set; }
+
+        public double Total { get; set; }
     }
 }

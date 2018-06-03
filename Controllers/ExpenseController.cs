@@ -44,6 +44,14 @@ namespace number_cruncher.Controllers
                 .Where(e => e.User == user)
                 .ToListAsync();
 
+
+            foreach (var expense in expenses)
+            {
+                expense.Total = _context.ExpenseRecord
+                    .Where(e => e.Expense == expense)
+                    .Sum(e => e.Amount);
+            };
+
             var expensesTotal = _context.ExpenseRecord
                 .Where(e => e.Expense.User == user
                     && e.Expense.ExpenseCategory.ExpenseType != "Mileage")

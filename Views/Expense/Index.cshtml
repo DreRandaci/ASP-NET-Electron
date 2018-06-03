@@ -5,7 +5,7 @@
 
 <h2>Expenses</h2>
 
-<table class="table">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -19,6 +19,12 @@
             </th>
             <th>
                 Total
+            </th>
+            <th>
+                Create
+            </th>
+            <th>
+                View
             </th>
         </tr>
     </thead>
@@ -38,13 +44,13 @@
                         @Html.DisplayFor(modelItem => item.DateCreated)
                     </td>
                     <td>
-
+                        @Html.DisplayFor(modelItem => item.Total)
                     </td>
-
                     <td>
-                        <form asp-action="" asp-route-expenseId="@item.ExpenseId">
-                            <input class="btn btn-info" type="submit" value="View Records" />
-                        </form>
+                        <a asp-action="Create" asp-route-id="@item.ExpenseId">New Record</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ExpenseId">View Records</a>
                     </td>
                 </tr>
             }
@@ -52,16 +58,20 @@
     </tbody>
     <tfoot>
         <tr>
-            <td>Expenses Total</td>
+            <th>Expenses Total</th>
             <td></td>
             <td></td>
             <td>$@Html.DisplayFor(modelItem => modelItem.ExpensesTotal)</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
-            <td>Mileage Total</td>
+            <th>Mileage Total</th>
             <td></td>
             <td></td>
             <td>@Html.DisplayFor(modelItem => modelItem.MileageTotal) miles driven</td>
+            <td></td>
+            <td></td>
         </tr>
     </tfoot>
 </table>
