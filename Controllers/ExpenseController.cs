@@ -83,15 +83,21 @@ namespace number_cruncher.Controllers
                 return NotFound();
             }
 
-            var expense = await _context.Expense
-                .SingleOrDefaultAsync(n => n.ExpenseId == id);
+            ApplicationUser user = await GetCurrentUserAsync();
 
-            if (expense == null)
+            var model = new ExpenseRecordsViewModel();
+
+            var expenseRecords = await _context.ExpenseRecord
+                .Where(e => e.Expense.ExpenseId == id && e.Expense.User == user)
+                .ToListAsync();
+
+            if (expenseRecords == null | expenseRecords.Count < 1)
             {
                 return NotFound();
             }
 
-            return View(expense);
+            model.ExpenseRecords = expenseRecords;
+            return View(model);
         }
 
         // POST: Notes/Create

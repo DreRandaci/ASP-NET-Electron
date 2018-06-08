@@ -1,0 +1,33 @@
+@model number_cruncher.Models.ExpenseViewModels.ExpenseRecordsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Expense records</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (var record in Model.ExpenseRecords)
+        {
+            <dt>
+                @Html.DisplayNameFor(modelItem => record.RecordName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => record.Amount)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => record.ExpenseDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => record.Details)
+            </dd>
+            <a asp-action="Edit" asp-route-id="record.ExpenseRecordId">Edit</a> 
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
