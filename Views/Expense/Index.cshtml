@@ -8,24 +8,12 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>
-                Expense
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-                Date Added
-            </th>
-            <th>
-                Total
-            </th>
-            <th>
-                Create
-            </th>
-            <th>
-                View
-            </th>
+            <th>Expense</th>
+            <th>Category</th>
+            <th>Date Added</th>
+            <th>Total</th>
+            <th>Create</th>
+            <th>View</th>
         </tr>
     </thead>
     <tbody>
@@ -43,11 +31,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DateCreated)
                     </td>
+                        @if (item.ExpenseCategory.ExpenseType != "Mileage") {
+                            <td>$@Html.DisplayFor(modelItem => item.Total)</td>
+                        } else {
+                            <td>@Html.DisplayFor(modelItem => item.Total) miles</td>
+                        }
                     <td>
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-                    <td>
-                        <a asp-action="Create" asp-route-id="@item.ExpenseId">New Record</a>
+                        <a asp-action="Create" asp-route-id="@item.ExpenseCategory">New Record</a>
                     </td>
                     <td>
                         <a asp-action="Details" asp-route-id="@item.ExpenseId">View Records</a>
@@ -69,7 +59,7 @@
             <th>Mileage Total</th>
             <td></td>
             <td></td>
-            <td>@Html.DisplayFor(modelItem => modelItem.MileageTotal) miles driven</td>
+            <td>@Html.DisplayFor(modelItem => modelItem.MileageTotal) miles</td>
             <td></td>
             <td></td>
         </tr>
